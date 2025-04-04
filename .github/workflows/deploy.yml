@@ -1,0 +1,23 @@
+name: Deploy WordPress to InfinityFree
+
+on:
+  push:
+    branches:
+      - main  # Change if your default branch is different
+
+jobs:
+  ftp-deploy:
+    name: Deploy to InfinityFree
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: /htdocs/  # Make sure your WordPress files are inside this folder
