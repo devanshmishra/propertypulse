@@ -135,3 +135,6 @@ function filter_property_archive_by_type($query) {
     }
 }
 add_action('pre_get_posts', 'filter_property_archive_by_type');
+
+
+// test autodeployment
